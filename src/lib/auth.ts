@@ -14,11 +14,17 @@ export const authOptions: NextAuthOptions = {
       id: "google-doctor-provider",
       clientId: process.env.GOOGLE_DOCTOR_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_DOCTOR_CLIENT_SECRET!,
+      httpOptions: {
+        timeout: 10000,
+      },
     }),
     Google({
       id: "google-patient-provider",
       clientId: process.env.GOOGLE_PATIENT_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_PATIENT_CLIENT_SECRET!,
+      httpOptions: {
+        timeout: 10000,
+      },
     }),
   ],
   pages: {
