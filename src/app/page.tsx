@@ -1,4 +1,5 @@
 import { Icons } from "@/components/Icons";
+import WalletConnectButton from "@/components/WalletConnectButton";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -13,6 +14,7 @@ export default function Home() {
       >
         Get Started
       </Link>
+      <WalletConnectButton />
     </main>
   );
 }
