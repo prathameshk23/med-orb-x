@@ -8,20 +8,21 @@ export async function middleware(req: NextRequest) {
   if (!token) {
     return NextResponse.redirect(new URL("/sign-in", req.nextUrl));
   }
+  console.log(token.role);
 
-  // if (
-  //   req.nextUrl.pathname.startsWith("/dashboard/patient") &&
-  //   token.role === "doctor"
-  // ) {
-  //   return NextResponse.rewrite(new URL("/dashboard/doctor", req.url));
-  // }
-  //
-  // if (
-  //   req.nextUrl.pathname.startsWith("/dashboard/doctor") &&
-  //   token.role !== "doctor"
-  // ) {
-  //   return NextResponse.rewrite(new URL("/dashboard/patient", req.url));
-  // }
+  if (
+    req.nextUrl.pathname.startsWith("/dashboard/patient") &&
+    token.role === "doctor"
+  ) {
+    return NextResponse.rewrite(new URL("/dashboard/doctor", req.url));
+  }
+
+  if (
+    req.nextUrl.pathname.startsWith("/dashboard/doctor") &&
+    token.role !== "doctor"
+  ) {
+    return NextResponse.rewrite(new URL("/dashboard/patient", req.url));
+  }
 }
 // This example protects all routes including api/trpc routes
 // Please edit this to allow other routes to be public as needed.

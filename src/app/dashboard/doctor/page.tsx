@@ -5,12 +5,18 @@ import React from "react";
 
 async function page() {
   const session = await getServerSession(authOptions);
-  return (
-    <div>
-      <div>{session?.user.name}</div>
-      <SignOut />
-    </div>
-  );
+
+  if (session?.user.role === "patient") {
+    return <div>only for doctors</div>;
+  } else {
+    return (
+      <div>
+        <div>{session?.user.name}</div>
+        <div>This is doctor page</div>
+        <SignOut />
+      </div>
+    );
+  }
 }
 
 export default page;
