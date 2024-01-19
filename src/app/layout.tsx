@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Providers from "@/components/Providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
-
-const inter = Inter({ subsets: ["latin"] });
+import MainNavBar from "@/components/MainNavBar";
 
 export const metadata: Metadata = {
   title: "MedOrbX",
@@ -24,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={GeistSans.className}>
         <Providers>
+          <MainNavBar />
           {authModal}
           {children}
         </Providers>

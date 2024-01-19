@@ -7,16 +7,18 @@ import {
   DrawerTrigger,
 } from "./ui/Drawer";
 import { Button } from "./ui/Button";
+import SearchBar from "./SearchBar";
 
 function MainNavBar() {
   return (
-    <nav className="lg:bg-transparent flex flex-row justify-between lg:px-36 lg:pt-14 p-5 fixed w-[100%]">
+    <nav className="lg:bg-transparent flex flex-row justify-between lg:px-36 lg:pt-14 fixed w-[100%]">
       <div className="lg:text-black lg:text-xl font-bold text-md">
         MedOrbX
         <sup className="rounded-full p-1 bg-purple-500 font-normal text-sm text-muted">
           beta
         </sup>
       </div>
+      <SearchBar />
       <div className="lg:hidden">
         <Drawer>
           <DrawerTrigger asChild>

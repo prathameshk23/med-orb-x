@@ -6,6 +6,12 @@ html {
   scroll-behavior: smooth;
   background-image: url("../../public/image\ 2.png");
 }
+
+::selection {
+  background: #333;
+  color: cyan;
+}
+
 @layer base {
   :root {
     /* --background: 0 0% 100%; */

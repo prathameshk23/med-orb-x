@@ -37,6 +37,7 @@
     "semver": "^7.5.4",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
+    "use-debounce": "^10.0.0",
     "vaul": "^0.8.0"
   },
   "devDependencies": {
