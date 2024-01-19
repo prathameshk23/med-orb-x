@@ -7,23 +7,42 @@ async function SearchPage({
   searchParams: { username?: string };
 }) {
   const searchQuerry = searchParams.username ?? "";
-  const user = await db.user.findUnique({
-    where: { username: searchQuerry },
+  const users = await db.user.findMany({
+    where: {
+      username: {
+        contains: searchQuerry as string,
+      },
+    },
   });
+  console.log(users);
   return (
     <main className="flex flex-col justify-center lg:px-36 items-center min-h-screen">
-      {user ? (
-        <div className="flex flex-col items-center justify-center">
-          <Image
-            width={40}
-            height={40}
-            src={user.image as string}
-            alt={user.username as string}
-            className="rounded-full h-40 w-40"
-          />
-          <h1 className="text-3xl font-bold mt-4">{user.username}</h1>
-          <p className="text-xl mt-2">{user.name}</p>
-        </div>
+      {users ? (
+        users.map((user) => (
+          <div key={user.id} className="border p-4 my-4">
+            <div className="flex items-center mb-2">
+              <Image
+                src={user.image || "default-avatar.jpg"}
+                alt={user.name || "User Avatar"}
+                height={12}
+                width={12}
+                className="w-12 h-12 rounded-full mr-4"
+              />
+              <div>
+                <h2 className="text-xl font-bold">{user.name || "No Name"}</h2>
+                <p className="text-gray-500">
+                  @{user.username || "No Username"}
+                </p>
+              </div>
+            </div>
+            <div>
+              <p>Email: {user.email || "No Email"}</p>
+              <p>Role: {user.role || "No Role"}</p>
+              <p>Created At: {user.createdAt.toDateString()}</p>
+              <p>Updated At: {user.updatedAt.toDateString()}</p>
+            </div>
+          </div>
+        ))
       ) : (
         <h1 className="text-3xl font-bold mt-4">User not found</h1>
       )}
