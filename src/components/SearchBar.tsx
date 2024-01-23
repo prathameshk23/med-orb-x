@@ -1,20 +1,27 @@
 "use client";
 import { SearchIcon } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDebounce } from "use-debounce";
 
 function SearchBar() {
-  const pathname = usePathname();
   const router = useRouter();
   const [search, setSearch] = React.useState("");
   const [query] = useDebounce(search, 500);
+  const { data: session } = useSession();
 
   useEffect(() => {
     if (!query) {
-      router.push(pathname.replace("search", ""));
+      if (session?.user.role === "patient") {
+        router.replace(`/dashboard/patient`);
+      }
+      if (session?.user.role === "doctor") {
+        router.replace(`/dashboard/doctor`);
+      }
+      router.replace(`/`);
     } else {
-      router.push(`/search?username=${query}`);
+      router.replace(`/search?username=${query}`);
     }
   }, [query, router]);
 

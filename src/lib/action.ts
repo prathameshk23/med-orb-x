@@ -9,6 +9,7 @@ export async function addUsername(formData: FormData) {
   const id = session?.user.id;
   const data = {
     username: formData.get("username"),
+    address: formData.get("address"),
   };
   try {
     if (!session?.user.username) {
@@ -18,6 +19,7 @@ export async function addUsername(formData: FormData) {
         },
         data: {
           username: data.username as string,
+          address: data.address as string,
         },
       });
     }

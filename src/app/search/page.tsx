@@ -9,12 +9,16 @@ async function SearchPage({
   const searchQuerry = searchParams.username ?? "";
   const users = await db.user.findMany({
     where: {
-      username: {
-        contains: searchQuerry as string,
-      },
+      AND: [
+        {
+          username: {
+            contains: searchQuerry as string,
+          },
+          // role: "doctor",
+        },
+      ],
     },
   });
-  console.log(users);
   return (
     <main className="flex flex-col justify-center lg:px-36 items-center min-h-screen">
       {users ? (
@@ -40,6 +44,7 @@ async function SearchPage({
               <p>Role: {user.role || "No Role"}</p>
               <p>Created At: {user.createdAt.toDateString()}</p>
               <p>Updated At: {user.updatedAt.toDateString()}</p>
+              <p>Address {user.address}</p>
             </div>
           </div>
         ))

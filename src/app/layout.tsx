@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 import Providers from "@/components/Providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
+import { Toaster } from "react-hot-toast";
 import MainNavBar from "@/components/MainNavBar";
 
 export const metadata: Metadata = {
@@ -21,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={GeistSans.className}>
+        <Toaster />
         <Providers>
           <MainNavBar />
           {authModal}
           {children}
         </Providers>
-        <Toaster />
         <SpeedInsights />
       </body>
     </html>
