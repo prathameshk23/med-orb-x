@@ -35,7 +35,7 @@ function SideBar() {
           {links.map((link) => {
             const Icon = link.icon;
             return (
-              <TooltipProvider>
+              <TooltipProvider key={link.href}>
                 <Tooltip>
                   <TooltipTrigger>
                     <Link

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import * as React from "react";
 import { FC } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/button";
 import { LogOutIcon } from "lucide-react";
 import { useContractContext } from "@/context/contractContext";
 

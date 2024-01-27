@@ -1,6 +1,6 @@
 "use client";
 import WalletConnectButton from "@/components/WalletConnectButton";
-import { Button, buttonVariants } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useContractContext } from "@/context/contractContext";

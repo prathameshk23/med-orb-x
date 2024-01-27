@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 
 interface CloseModalProps {}
 
@@ -12,7 +12,7 @@ const CloseModal: FC<CloseModalProps> = ({}) => {
 
   return (
     <Button
-      variant="subtle"
+      variant="ghost"
       className="h-6 w-6 p-0 rounded-md"
       onClick={() => router.back()}
     >

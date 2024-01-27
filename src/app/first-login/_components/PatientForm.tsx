@@ -1,6 +1,6 @@
 "use client";
 import WalletConnectButton from "@/components/WalletConnectButton";
-import { Button, buttonVariants } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useContractContext } from "@/context/contractContext";
@@ -106,7 +106,9 @@ function PatientForm() {
           />
           <div className="flex justify-center items-center flex-col gap-4">
             {fileNames.map((file) => (
-              <div className="bg-purple-300 p-4 rounded-full">{file}</div>
+              <div className="bg-purple-300 p-4 rounded-full" key={file}>
+                {file}
+              </div>
             ))}
             <Button
               type="submit"

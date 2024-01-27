@@ -1,4 +1,5 @@
 import DoctorHeroCard from "@/components/docotr/DoctorHeroCard";
+import DoctorProfileCard from "@/components/docotr/DoctorProfileCard";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -17,7 +18,7 @@ async function Page() {
     return (
       <div className="flex flex-row justify-between items-center ml-[150px]">
         <DoctorHeroCard />
-        <div>Doctor Progile</div>
+        <DoctorProfileCard />
       </div>
     );
   }

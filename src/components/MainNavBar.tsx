@@ -6,7 +6,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "./ui/Drawer";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function MainNavBar() {

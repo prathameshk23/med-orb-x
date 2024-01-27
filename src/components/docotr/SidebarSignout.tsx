@@ -2,7 +2,7 @@
 import { useContractContext } from "@/context/contractContext";
 import { LogOut } from "lucide-react";
 import React from "react";
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/button";
 
 function SidebarSignout() {
   const { SigningOut } = useContractContext();

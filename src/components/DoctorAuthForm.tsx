@@ -5,7 +5,7 @@ import * as React from "react";
 import { FC } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Icons } from "./Icons";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/button";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 

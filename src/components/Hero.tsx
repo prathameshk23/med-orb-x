@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { buttonVariants } from "./ui/Button";
-
+import { buttonVariants } from "@/components/ui/button";
 async function Hero() {
   return (
     <header className="relative min-h-screen">

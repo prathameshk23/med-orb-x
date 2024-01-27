@@ -8,7 +8,6 @@ export async function middleware(req: NextRequest) {
   if (!token) {
     return NextResponse.redirect(new URL("/sign-in", req.nextUrl));
   }
-  console.log(token.role);
 
   if (
     req.nextUrl.pathname.startsWith("/dashboard/patient") &&

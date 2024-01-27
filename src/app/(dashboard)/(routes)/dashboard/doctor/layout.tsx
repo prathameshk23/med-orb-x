@@ -1,3 +1,4 @@
+import WalletConnectButton from "@/components/WalletConnectButton";
 import SideBar from "@/components/docotr/SideBar";
 import type { Metadata } from "next";
 
@@ -12,8 +13,11 @@ export default function DoctorLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main>
+    <main className="min-h-screen bg-indigo-950">
       <SideBar />
+      <div className="absolute top-10 right-10">
+        <WalletConnectButton />
+      </div>
       {children}
     </main>
   );

@@ -19,7 +19,7 @@ async function Page() {
           id="userContainer"
         >
           {fetchedUsers.map((user) => (
-            <div className="bg-white p-4 rounded-lg shadow-md">
+            <div className="bg-white p-4 rounded-lg shadow-md" key={user.id}>
               <p className="text-lg font-bold">User ID: {user.id}</p>
               <p>Email: {user.email}</p>
               <p>Name: {user.name}</p>
