@@ -4,7 +4,6 @@ import Providers from "@/components/Providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "react-hot-toast";
-import MainNavBar from "@/components/MainNavBar";
 
 export const metadata: Metadata = {
   title: "MedOrbX",
@@ -23,7 +22,6 @@ export default function RootLayout({
       <body className={GeistSans.className}>
         <Toaster />
         <Providers>
-          <MainNavBar />
           {authModal}
           {children}
         </Providers>

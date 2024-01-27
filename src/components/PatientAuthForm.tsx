@@ -34,7 +34,7 @@ const PatientAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
       <Button
         type="button"
         size="sm"
-        className="w-full"
+        className="w-full bg-sky-500"
         onClick={loginWithGoogle}
         disabled={isLoading}
       >

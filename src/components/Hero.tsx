@@ -28,7 +28,7 @@ async function Hero() {
             href="/sign-in"
             className={cn(
               buttonVariants({ variant: "default" }),
-              "rounded-lg m-auto bg-sky-500",
+              "rounded-lg m-auto bg-slate-100 text-black border-2 border-black shadow-[0_35px_60px_-15px_rgba(23,34,22,44)]",
             )}
           >
             Get Started

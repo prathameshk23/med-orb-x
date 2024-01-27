@@ -1,23 +1,24 @@
 "use client";
-import { signOut } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 import { FC } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "./ui/Button";
 import { LogOutIcon } from "lucide-react";
+import { useContractContext } from "@/context/contractContext";
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  text?: string;
+}
 
-const SignOut: FC<UserAuthFormProps> = ({ className, ...props }) => {
+const SignOut: FC<UserAuthFormProps> = ({ text, className, ...props }) => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const SigningOut = async () => {
+  const { SigningOut } = useContractContext();
+  const SignOut = async () => {
     setIsLoading(true);
     try {
-      await signOut({
-        callbackUrl: "/",
-      });
+      await SigningOut();
     } catch (error) {
       toast({
         title: "Error",
@@ -31,9 +32,9 @@ const SignOut: FC<UserAuthFormProps> = ({ className, ...props }) => {
 
   return (
     <div className={cn("flex justify-center", className)} {...props}>
-      <Button type="button" size="sm" onClick={SigningOut} disabled={isLoading}>
+      <Button type="button" size="sm" onClick={SignOut} disabled={isLoading}>
         {isLoading ? null : <LogOutIcon className="h-4 w-4 mr-2" />}
-        Sign Out
+        {text}
       </Button>
     </div>
   );

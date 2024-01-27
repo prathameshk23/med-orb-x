@@ -23,7 +23,7 @@ function SearchBar() {
     } else {
       router.replace(`/search?username=${query}`);
     }
-  }, [query, router]);
+  }, [query, router, session?.user.role]);
 
   return (
     <div className="flex flex-row gap-5 rounded-full p-1 border-black border">

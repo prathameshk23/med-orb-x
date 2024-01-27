@@ -1,10 +1,10 @@
-import SignOut from "@/components/SignOut";
+import DoctorHeroCard from "@/components/docotr/DoctorHeroCard";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
-async function page() {
+async function Page() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user.username) {
@@ -15,13 +15,12 @@ async function page() {
     return <div>only for doctors</div>;
   } else {
     return (
-      <div className="flex flex-col justify-center lg:px-36 items-center min-h-screen">
-        <div>{session?.user.name}</div>
-        <div>This is doctor page</div>
-        <SignOut />
+      <div className="flex flex-row justify-between items-center ml-[150px]">
+        <DoctorHeroCard />
+        <div>Doctor Progile</div>
       </div>
     );
   }
 }
 
-export default page;
+export default Page;

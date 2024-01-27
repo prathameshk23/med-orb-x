@@ -1,80 +1,31 @@
-"use client";
+import { db } from "@/lib/db";
+import React from "react";
 
-import { CONTRACT_ADDRESS } from "@/lib/address";
-import {
-  useContract,
-  useContractWrite,
-  useStorageUpload,
-} from "@thirdweb-dev/react";
-import toast from "react-hot-toast";
-import { ChangeEvent, useState } from "react";
-import WalletConnectButton from "@/components/WalletConnectButton";
-
-function Page() {
-  const [isfiles, setFiles] = useState<File[]>([]);
-  const [fileNames, setFileNames] = useState<string[]>([]);
-  const { mutateAsync: upload } = useStorageUpload();
-  const { contract } = useContract(CONTRACT_ADDRESS);
-
-  const {
-    mutateAsync: addAgent,
-    isLoading,
-    isSuccess,
-  } = useContractWrite(contract, "addAgent");
-
-  const retriveFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const data = e.target.files;
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        const file = data[i];
-        setFiles((prev) => [...prev, file]);
-        setFileNames((prev) => [...prev, file.name]);
-      }
-    }
-    e.preventDefault();
-  };
-
-  const uploadFile = async () => {
-    const Url = await upload({
-      data: isfiles,
-      options: {
-        uploadWithGatewayUrl: true,
+async function Page() {
+  const userIds = ["clru6iszo0000ab0z5v89lv3c", "clru86yut0003ab0zhis2ig2p"];
+  const fetchedUsers = await db.user.findMany({
+    where: {
+      id: {
+        in: userIds,
       },
-    });
-    return Url;
-  };
-
-  const handleAddAgent = async () => {
-    const uri = await uploadFile();
-    try {
-      const data = await addAgent({
-        args: ["kuku", 0, fileNames, uri],
-      });
-    } catch (error: any) {
-      const err: Error = {
-        name: error.name,
-        message: error.message.match(/Reason: (.+?)\n/)?.[1] as string,
-      };
-      toast.error(err.message);
-      return;
-    }
-    toast.success("Agent Added");
-  };
+    },
+  });
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
-      <div>
-        <input type="file" accept=".pdf" multiple onChange={retriveFile} />
-      </div>
-      <div className="text-black"></div>
-      <div className="text-black">{fileNames}</div>
-      <div>
-        <WalletConnectButton />
-        <button
-          onClick={handleAddAgent}
-          className={isLoading ? "bg-red-400" : "bg-sky-950"}
+      <div className="container mx-auto my-8">
+        <h1 className="text-3xl font-bold mb-4">User List</h1>
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          id="userContainer"
         >
-          Add Agent
-        </button>
+          {fetchedUsers.map((user) => (
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <p className="text-lg font-bold">User ID: {user.id}</p>
+              <p>Email: {user.email}</p>
+              <p>Name: {user.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
