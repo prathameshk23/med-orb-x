@@ -13,7 +13,7 @@ const page: FC = () => {
           href="/"
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "self-start -mt-20 bg-slate-50",
+            "self-start -mt-20 bg-slate-50 text-black",
           )}
         >
           <ChevronLeft className="mr-2 h-4 w-4" />

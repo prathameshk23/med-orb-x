@@ -10,6 +10,7 @@ import {
 } from "@thirdweb-dev/react";
 import { Sepolia } from "@thirdweb-dev/chains";
 import ContractContextProvider from "@/context/ContractContextProvider";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -27,7 +28,15 @@ const Providers: FC<LayoutProps> = ({ children }) => {
       ]}
     >
       <SessionProvider>
-        <ContractContextProvider>{children}</ContractContextProvider>
+        <ContractContextProvider>
+          <ProgressBar
+            height="4px"
+            color="#38bdf8"
+            options={{ showSpinner: false }}
+            shallowRouting
+          />
+          {children}
+        </ContractContextProvider>
       </SessionProvider>
     </ThirdwebProvider>
   );

@@ -16,7 +16,7 @@ async function Page() {
     return <div>only for doctors</div>;
   } else {
     return (
-      <div className="flex flex-row justify-between items-center ml-[150px]">
+      <div className="flex flex-col lg:flex-row justify-between items-center lg:ml-[120px]">
         <DoctorHeroCard />
         <DoctorProfileCard />
       </div>

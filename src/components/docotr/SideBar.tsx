@@ -21,7 +21,7 @@ const links = [
 function SideBar() {
   const pathname = usePathname();
   return (
-    <aside className="fixed flex left-0 w-fit bg-white bg-opacity-20 m-4 rounded-xl min-h-[95vh] backdrop-blur-3xl drop-shadow-lg shadow">
+    <aside className=" hidden lg:fixed lg:flex left-0 w-fit bg-white bg-opacity-20 m-4 rounded-xl min-h-[95vh] backdrop-blur-sm drop-shadow-lg shadow">
       <div className="flex flex-col justify-between items-center p-3">
         <div className="flex flex-col gap-0 justify-center items-center">
           <div className="text-xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">

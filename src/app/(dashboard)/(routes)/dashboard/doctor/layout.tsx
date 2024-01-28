@@ -13,7 +13,7 @@ export default function DoctorLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen bg-indigo-950">
+    <main className="h-[100svh] md:h-screen bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-violet-950 via-indigo-950 to-blue-950">
       <SideBar />
       <div className="absolute top-10 right-10">
         <WalletConnectButton />

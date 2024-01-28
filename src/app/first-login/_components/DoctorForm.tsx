@@ -7,13 +7,16 @@ import { useContractContext } from "@/context/contractContext";
 import { addUsername } from "@/lib/action";
 import { cn } from "@/lib/utils";
 import { useAddress } from "@thirdweb-dev/react";
-import React from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 function DoctorForm() {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [isUsername, setIsUsername] = React.useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isUsername, setIsUsername] = useState("");
+  const router = useRouter();
   const address = useAddress();
   const { addUser } = useContractContext();
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <div className="relative w-full max-w-lg">
@@ -67,6 +70,7 @@ function DoctorForm() {
                   recordContent: [],
                 });
                 setIsLoading(false);
+                router.refresh();
               }}
             >
               Submit

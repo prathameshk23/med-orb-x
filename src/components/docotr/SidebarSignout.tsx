@@ -8,7 +8,7 @@ function SidebarSignout() {
   const { SigningOut } = useContractContext();
   return (
     <Button
-      className="bg-transparent hover:bg-transparent"
+      className="bg-transparent hover:bg-transparent backdrop-blur-sm"
       onClick={async () => await SigningOut()}
     >
       <LogOut className="h-6 w-6 bg-transparent" />
