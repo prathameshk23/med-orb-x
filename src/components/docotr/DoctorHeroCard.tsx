@@ -17,7 +17,7 @@ async function DoctorHeroCard() {
         alt="Image of doctor"
         width={400}
         height={400}
-        className="lg:mt-9 size-[12rem] lg:size-[25rem]"
+        className="lg:mt-9 size-[12rem] xl:size-[25rem] lg:size-[14rem]"
       />
     </div>
   );

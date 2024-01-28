@@ -7,7 +7,7 @@ async function DoctorProfileCard() {
   const session = await getServerSession(authOptions);
   return (
     <div className="hidden min-h-[200px] lg:w-4/12 w-full bg-indigo-800 mx-4 flex-wrap my-4 h-[35vh] rounded-3xl p-4 lg:flex flex-row justify-start items-center gap-2">
-      <Avatar className="h-24 w-24">
+      <Avatar className="xl:h-24 xl:w-24 w-16 h-16">
         <AvatarImage
           src={session?.user.image as string}
           alt="Profile picture of doctor"
