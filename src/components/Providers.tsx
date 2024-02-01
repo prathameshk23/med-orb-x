@@ -11,7 +11,6 @@ import {
 import { Sepolia } from "@thirdweb-dev/chains";
 import ContractContextProvider from "@/context/ContractContextProvider";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
-
 interface LayoutProps {
   children: ReactNode;
 }

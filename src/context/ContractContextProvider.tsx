@@ -1,17 +1,27 @@
 "use client";
 import React from "react";
 import { ContractContext } from "./contractContext";
-import { useContract, useContractWrite } from "@thirdweb-dev/react";
+import {
+  useContract,
+  useContractRead,
+  useContractWrite,
+} from "@thirdweb-dev/react";
 import { CONTRACT_ADDRESS } from "@/lib/address";
 import toast from "react-hot-toast";
 import { ContractContextType, UserProps } from "@/types/medorbx";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 function ContractContextProvider({ children }: { children: React.ReactNode }) {
   const { contract } = useContract(CONTRACT_ADDRESS);
   const { mutateAsync: addAgent } = useContractWrite(contract, "addAgent");
-  const router = useRouter();
+  const patientList = useContractRead(contract, "getPatientList");
+  const doctorList = useContractRead(contract, "getDoctorList");
+  const patientrecords = useContractRead(
+    contract,
+    "getPatientRecords",
+    //@ts-ignore
+    ["0xE324f03292a7Aa11EFc3C70F56d780CDf36D6807"],
+  );
 
   const SigningOut = async () => {
     try {
@@ -49,6 +59,9 @@ function ContractContextProvider({ children }: { children: React.ReactNode }) {
     contract,
     addUser,
     SigningOut,
+    patientList,
+    doctorList,
+    patientrecords,
   };
 
   return (

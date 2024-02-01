@@ -27,3 +27,12 @@ export async function addUsername(formData: FormData) {
     console.error(error);
   }
 }
+
+export async function getUser() {
+  try {
+    const user = await db.user.findMany();
+    return user;
+  } catch (error) {
+    return error;
+  }
+}
