@@ -9,6 +9,13 @@ export type UserProps = {
   recordContent: string[];
 };
 
+export type Records = {
+  content: string;
+  name: string;
+  timestamp: number;
+  uploader: string;
+};
+
 // Define the context interface
 export interface ContractContextType {
   contract: SmartContract<BaseContract> | undefined;
@@ -17,6 +24,8 @@ export interface ContractContextType {
   patientList: any;
   doctorList: any;
   patientrecords: any;
+  paitentWithAccess: any;
+  doctorWithAccess: any;
 }
 
 export type User = {

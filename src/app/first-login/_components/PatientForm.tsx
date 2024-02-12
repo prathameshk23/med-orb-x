@@ -8,6 +8,7 @@ import { addUsername } from "@/lib/action";
 import { cn } from "@/lib/utils";
 import { useAddress, useStorageUpload } from "@thirdweb-dev/react";
 import { Loader2, Upload } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 
 function PatientForm() {
@@ -18,6 +19,7 @@ function PatientForm() {
   const [isUsername, setIsUsername] = useState("");
   const address = useAddress();
   const { addUser } = useContractContext();
+  const router = useRouter();
 
   const retriveFile = (e: ChangeEvent<HTMLInputElement>) => {
     const data = e.target.files;
@@ -51,6 +53,7 @@ function PatientForm() {
       recordContent: uri,
     });
     setIsLoading(false);
+    router.refresh();
   };
 
   return (
@@ -86,16 +89,16 @@ function PatientForm() {
             <Upload size={48} className="text-white mb-1" />
             Upload file
             <Input
+              required
               multiple
               type="file"
               id="fileUpload"
               className="hidden"
               disabled={!address}
               onChange={retriveFile}
+              accept=".pdf"
             />
-            <p className="text-xs text-gray-400 mt-2">
-              PNG, JPG SVG, WEBP, and GIF are Allowed.
-            </p>
+            <p className="text-md text-gray-400 mt-2">Only PDFs are allowed</p>
           </Label>
           <input
             type="text"
@@ -105,11 +108,13 @@ function PatientForm() {
             className="hidden"
           />
           <div className="flex justify-center items-center flex-col gap-4">
-            {fileNames.map((file) => (
-              <div className="bg-purple-300 p-4 rounded-full" key={file}>
-                {file}
-              </div>
-            ))}
+            <div className="bg-purple-300 p-4 rounded-full text-black">
+              {fileNames.length > 0 ? (
+                <p>{fileNames.length} files selected</p>
+              ) : (
+                <p>No files selected</p>
+              )}
+            </div>
             <Button
               type="submit"
               disabled={!address}
@@ -123,10 +128,16 @@ function PatientForm() {
               )}
               onClick={handleAddAgent}
             >
-              Submit
+              {isLoading ? (
+                <Loader2 className="w-10 h-10 text-black animate-spin" />
+              ) : (
+                "Submit"
+              )}
             </Button>
           </div>
-          <WalletConnectButton />
+          <div className="flex justify-center items-center">
+            <WalletConnectButton />
+          </div>
         </div>
       </form>
     </div>

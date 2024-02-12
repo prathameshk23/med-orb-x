@@ -7,6 +7,7 @@ import { useContractContext } from "@/context/contractContext";
 import { addUsername } from "@/lib/action";
 import { cn } from "@/lib/utils";
 import { useAddress } from "@thirdweb-dev/react";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -73,10 +74,16 @@ function DoctorForm() {
                 router.refresh();
               }}
             >
-              Submit
+              {isLoading ? (
+                <Loader2 className="w-6 h-6 animate-spin text-black" />
+              ) : (
+                "Add Username"
+              )}
             </Button>
           </div>
-          <WalletConnectButton />
+          <div className="flex justify-center items-center">
+            <WalletConnectButton />
+          </div>
         </div>
       </form>
     </div>

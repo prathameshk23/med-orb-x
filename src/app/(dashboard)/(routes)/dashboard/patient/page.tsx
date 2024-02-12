@@ -1,4 +1,5 @@
-import SignOut from "@/components/SignOut";
+import PatientHeroCard from "@/components/paitent/PatientHeroCard";
+import PatientProfileCard from "@/components/paitent/PatientProfileCard";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -9,13 +10,18 @@ async function page() {
 
   if (!session?.user.username) {
     redirect("/first-login");
+  } else {
+    if (session?.user.role === "doctor") {
+      return <div>only for patient</div>;
+    } else {
+      return (
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:ml-[120px]">
+          <PatientHeroCard />
+          <PatientProfileCard />
+        </div>
+      );
+    }
   }
-  return (
-    <div className="flex flex-col justify-center lg:px-36 items-center min-h-screen">
-      This is patient page
-      <SignOut />
-    </div>
-  );
 }
 
 export default page;

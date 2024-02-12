@@ -2,6 +2,7 @@
 import React from "react";
 import { ContractContext } from "./contractContext";
 import {
+  useAddress,
   useContract,
   useContractRead,
   useContractWrite,
@@ -12,16 +13,20 @@ import { ContractContextType, UserProps } from "@/types/medorbx";
 import { signOut } from "next-auth/react";
 
 function ContractContextProvider({ children }: { children: React.ReactNode }) {
+  const address = useAddress();
   const { contract } = useContract(CONTRACT_ADDRESS);
   const { mutateAsync: addAgent } = useContractWrite(contract, "addAgent");
   const patientList = useContractRead(contract, "getPatientList");
   const doctorList = useContractRead(contract, "getDoctorList");
-  const patientrecords = useContractRead(
-    contract,
-    "getPatientRecords",
-    //@ts-ignore
-    ["0xE324f03292a7Aa11EFc3C70F56d780CDf36D6807"],
-  );
+  const paitentWithAccess = useContractRead(contract, "getPatientsWithAccess", [
+    address,
+  ]);
+  const doctorWithAccess = useContractRead(contract, "getDoctorsWithAccess", [
+    address,
+  ]);
+  const patientrecords = useContractRead(contract, "getPatientRecords", [
+    address,
+  ]);
 
   const SigningOut = async () => {
     try {
@@ -62,6 +67,8 @@ function ContractContextProvider({ children }: { children: React.ReactNode }) {
     patientList,
     doctorList,
     patientrecords,
+    paitentWithAccess,
+    doctorWithAccess,
   };
 
   return (

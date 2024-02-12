@@ -1,25 +1,118 @@
 "use client";
-import { getUser } from "@/lib/action";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { User } from "@/types/medorbx";
 import { useContractContext } from "@/context/contractContext";
 import Link from "next/link";
+import {
+  ConnectWallet,
+  useAddress,
+  useContract,
+  useContractWrite,
+} from "@thirdweb-dev/react";
+import { Button } from "@/components/ui/button";
+import WalletConnectButton from "@/components/WalletConnectButton";
+import { getUser } from "@/lib/action";
+
+type records = {
+  addr: string;
+  content: string;
+  name: string;
+  timestamp: number;
+  uploader: string;
+}[];
 
 function Page() {
-  const { patientList, doctorList, patientrecords } = useContractContext();
+  function formatDate(timestamp: number) {
+    const utcDate = new Date(timestamp * 1000);
+
+    const timezone = "Asia/Kolkata";
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+      timeZone: timezone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    }).format(utcDate);
+    return formattedDate;
+  }
+  const address = useAddress();
+  // const userId = [
+  //   "clrx5zec100098elsr9dkk30h",
+  //   "clrxga92q000010hlb8tcej39",
+  //   "clrx5zec100098elsr9dkk30h",
+  //   "clrxga92q000010hlb8tcej39",
+  // ];
+  const {
+    patientList,
+    doctorList,
+    patientrecords,
+    doctorWithAccess,
+    paitentWithAccess,
+  } = useContractContext();
+  const addr = doctorWithAccess.data;
+
   const data = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      return await getUser();
+      return await getUser(addr);
     },
   });
   const users: User = data.data as User;
   const patients = patientList.data;
   const doctors = doctorList.data;
-  const patientRecords = patientrecords.data;
+  const patientRecords: records = patientrecords.data;
+  const { contract } = useContract(
+    "0x9f9D4e5Fdd1E645711257c8D5241a86Fa517a08d",
+  );
+  const { mutateAsync: uploadRecord, isLoading } = useContractWrite(
+    contract,
+    "uploadRecord",
+  );
+  const doctorAddr = "0xE324f03292a7Aa11EFc3C70F56d780CDf36D6807";
+  const recordName = "record1";
+  const _record = "record1";
+  const patientAddr = "0xAcec262a25d2FeE7b08a906153B3A5a90468E7Dc";
+
+  const call = async () => {
+    try {
+      const data = await uploadRecord({
+        args: [patientAddr, recordName, _record],
+      });
+      console.info("contract call successs", data);
+    } catch (err) {
+      console.error("contract call failure", err);
+    }
+  };
+  const { mutateAsync: revokeAccess } = useContractWrite(
+    contract,
+    "revokeAccess",
+  );
+
+  const getName = async (addr: string) => {
+    return data;
+  };
+
+  const dcall = async () => {
+    try {
+      const data = await revokeAccess({ args: [doctorAddr] });
+      console.info("contract call successs", data);
+    } catch (err) {
+      console.error("contract call failure", err);
+    }
+  };
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
+      <WalletConnectButton />
+      <Button onClick={call} disabled={!address}>
+        Add Record
+      </Button>
+      <Button onClick={dcall} disabled={!address}>
+        reovke Record
+      </Button>
       <div className="container mx-auto my-8">
         <h1 className="text-3xl font-bold mb-4">User List</h1>
         <div
@@ -93,7 +186,7 @@ function Page() {
           {patientrecords.isLoading ? (
             <p>Loading...</p>
           ) : (
-            patientRecords?.map((record: any) => (
+            patientRecords?.map((record) => (
               <div
                 className="bg-white p-4 rounded-lg shadow-md text-black break-all"
                 key={record.content}
@@ -105,6 +198,8 @@ function Page() {
                 >
                   <p>Name: {record.name}</p>
                 </Link>
+                <p>Uploader: {record.uploader}</p>
+                <p>Time: {formatDate(record.timestamp)}</p>
               </div>
             ))
           )}

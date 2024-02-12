@@ -28,9 +28,15 @@ export async function addUsername(formData: FormData) {
   }
 }
 
-export async function getUser() {
+export async function getUser(addr: string[]) {
   try {
-    const user = await db.user.findMany();
+    const user = await db.user.findMany({
+      where: {
+        address: {
+          in: addr,
+        },
+      },
+    });
     return user;
   } catch (error) {
     return error;

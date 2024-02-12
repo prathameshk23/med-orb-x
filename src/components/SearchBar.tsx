@@ -13,15 +13,9 @@ function SearchBar() {
 
   useEffect(() => {
     if (!query) {
-      if (session?.user.role === "patient") {
-        router.replace(`/dashboard/patient`);
-      }
-      if (session?.user.role === "doctor") {
-        router.replace(`/dashboard/doctor`);
-      }
-      router.replace(`/`);
+      router.replace(`/dashboard/patient/search`);
     } else {
-      router.replace(`/search?username=${query}`);
+      router.replace(`/dashboard/patient/search?username=${query}`);
     }
   }, [query, router, session?.user.role]);
 
