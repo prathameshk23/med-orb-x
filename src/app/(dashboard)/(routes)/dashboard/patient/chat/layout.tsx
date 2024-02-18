@@ -16,7 +16,7 @@ export default function DoctorLayout({
       <div className="flex fixed top-0 right-0 justify-center items-center min-h-screen mx-4">
         <ChatSideBar />
       </div>
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

@@ -54,7 +54,7 @@ async function MainChat({
   // Find the intersection of senderMessages and receiverMessages based on messageId or other unique identifier
 
   return (
-    <section className="ml-[9rem] pt-[5.55rem]">
+    <section className="2xl:ml-[9rem] 2xl:pt-[5.55rem] lg:ml-[7rem] lg:pt-[5rem]">
       <div className="bg-purple-500/30 backdrop-blur-lg w-[65vw] min-h-[85vh] rounded-lg">
         <div className="p-4 flex flex-col justify-between h-[85vh] gap-4">
           <div>

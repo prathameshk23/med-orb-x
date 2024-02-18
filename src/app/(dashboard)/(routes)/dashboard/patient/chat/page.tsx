@@ -3,8 +3,8 @@ import React from "react";
 
 function Page() {
   return (
-    <section className="ml-[9rem] pt-[5.55rem]">
-      <div className="bg-purple-500/30 backdrop-blur-lg w-[65vw] min-h-[85vh] rounded-lg">
+    <section className="2xl:ml-[9rem] 2xl:pt-[5.55rem] lg:ml-[7rem] lg:pt-[5rem]">
+      <div className="bg-purple-500/30 backdrop-blur-lg 2xl:w-[65vw] lg:w-[63vw] min-h-[85vh] rounded-lg">
         <div className="p-4 text-xl flex flex-col justify-center items-center h-[85vh] gap-4">
           <div>
             <Image

@@ -27,7 +27,7 @@ function ChatSideBar() {
   const pathname = usePathname();
 
   return (
-    <aside className="min-h-[85vh] backdrop-blur-lg bg-transparent/30 rounded-lg flex flex-col p-8 w-[25vw] mt-8">
+    <aside className="min-h-[85vh] backdrop-blur-lg bg-transparent/30 rounded-lg flex flex-col p-8 w-[25vw] 2xl:mt-8 lg:mt-16">
       <div className="flex justify-start items-start flex-col mb-4">
         <h1 className="text-4xl">Doctors</h1>
         <Separator className="bg-purple-300" />
