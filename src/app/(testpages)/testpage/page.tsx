@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { User } from "@/types/medorbx";
 import { useContractContext } from "@/context/contractContext";
@@ -91,6 +91,9 @@ function Page() {
     contract,
     "revokeAccess",
   );
+  useEffect(() => {
+    console.log("aldkfjdlskfjlfkj");
+  }, []);
 
   const getName = async (addr: string) => {
     return data;

@@ -105,6 +105,13 @@ body {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.chat-hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.chat-hidden-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
 @layer utilities {
   .animation-delay-2000 {

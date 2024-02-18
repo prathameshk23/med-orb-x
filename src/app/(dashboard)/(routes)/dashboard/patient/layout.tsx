@@ -15,7 +15,7 @@ export default function DoctorLayout({
   return (
     <main className="h-[100svh] md:h-screen bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-violet-950 via-indigo-950 to-blue-950">
       <SideBar />
-      <div className="absolute top-10 right-10">
+      <div className="absolute top-6 right-10 z-[10]">
         <WalletConnectButton />
       </div>
       {children}
