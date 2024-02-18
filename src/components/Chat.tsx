@@ -44,6 +44,8 @@ function Chat({
         setMessages((prev) => [parsedData, ...prev]);
       }
     });
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+
     return () => {
       pusherClient.unsubscribe("chat");
     };
