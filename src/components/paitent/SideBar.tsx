@@ -2,6 +2,7 @@
 import React from "react";
 import SidebarSignout from "./SidebarSignout";
 import {
+  Bot,
   Database,
   Home,
   MessageCircle,
@@ -24,6 +25,7 @@ const links = [
   { name: "Doctors", href: "/dashboard/patient/doctors", icon: UsersRound },
   { name: "Chat", href: "/dashboard/patient/chat", icon: MessageCircle },
   { name: "Search", href: "/dashboard/patient/search", icon: Search },
+  { name: "Chat Bot", href: "/dashboard/patient/ai", icon: Bot },
 ];
 
 function SideBar() {

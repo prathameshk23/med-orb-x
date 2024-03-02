@@ -5,6 +5,7 @@ import { User } from "@/types/medorbx";
 import { useQuery } from "@tanstack/react-query";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
+import Image from "next/image";
 
 function ShowDoctors() {
   const { doctorWithAccess } = useContractContext();
@@ -34,13 +35,13 @@ function ShowDoctors() {
                 key={doctor.id}
               >
                 <Link href={`/dashboard/patient/doctors/${doctor.address}`}>
-                  <Avatar className="2xl:h-16 2xl:w-16 w-16 h-16">
-                    <AvatarImage
-                      src={doctor.image as string}
-                      alt="Profile picture of patient"
-                    />
-                    <AvatarFallback>Profice picture</AvatarFallback>
-                  </Avatar>
+                  <Image
+                    src={doctor.image as string}
+                    alt="Profile picture of patient"
+                    width={80}
+                    height={80}
+                    className="rounded-full"
+                  />
                   <p className="text-lg font-bold">{doctor.name}</p>
                   <p>@{doctor.username}</p>
                   <p>Email: {doctor.email}</p>
