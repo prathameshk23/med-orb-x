@@ -34,7 +34,7 @@ function SideBar() {
     <aside className=" hidden lg:fixed lg:flex left-0 w-fit bg-white bg-opacity-20 m-4 rounded-xl min-h-[95vh] backdrop-blur-sm drop-shadow-lg shadow">
       <div className="flex flex-col justify-between items-center p-3">
         <div className="flex flex-col gap-0 justify-center items-center">
-          <div className="text-xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          <div className="xl:text-xl text-sm font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             <Link href={"/"}>
               <div>Med</div>
               <div>OrbX</div>
@@ -52,13 +52,13 @@ function SideBar() {
                       href={link.href}
                       key={link.name}
                       className={clsx(
-                        "flex h-[48px] grow items-center justify-center gap-2 rounded-[10px] p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+                        "flex xl:h-[48px] lg:h-[30px] grow items-center justify-center gap-2 rounded-[10px] p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
                         {
                           "bg-purple-400 text-sky-100": pathname === link.href,
                         },
                       )}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-4 w-4 xl:h-6 xl:w-6" />
                     </Link>
                     <TooltipContent
                       side="right"

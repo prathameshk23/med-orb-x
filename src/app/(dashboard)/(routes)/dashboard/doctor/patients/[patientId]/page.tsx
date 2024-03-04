@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { UploadCloud } from "lucide-react";
+import Image from "next/image";
 
 async function Page({ params }: { params: { patientId?: string } }) {
   const patientAddress = params.patientId;
@@ -21,10 +22,25 @@ async function Page({ params }: { params: { patientId?: string } }) {
   return (
     <main>
       <div className="flex flex-col justify-center items-center min-h-screen gap-4">
-        <div>Name: {data?.name}</div>
-        <div>Email: {data?.email}</div>
-        <div>Username: {data?.username}</div>
-        <div>Address: {data?.address}</div>
+        <div className="flex flex-col gap-4 bg-purple-300 backdrop-blur-md p-8 rounded-lg text-black">
+          <div>
+            <div className="flex flex-row justify-start items-center gap-2">
+              <Image
+                src={data?.image as string}
+                alt="avatar"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+              <p>{data?.name}</p>
+            </div>
+            <div>Email: {data?.email}</div>
+          </div>
+          <div>
+            <div>Username: {data?.username}</div>
+            <div>Address: {data?.address}</div>
+          </div>
+        </div>
         <PatientTableRenderer patientAddress={patientAddress as string} />
       </div>
       <div className="fixed bottom-0 right-0 mr-28 mb-16">

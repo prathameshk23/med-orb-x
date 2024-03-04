@@ -7,7 +7,6 @@ import { ScrollArea } from "./ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useRef } from "react";
 import { SendHorizontalIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 export default function AiChat() {
@@ -21,7 +20,7 @@ export default function AiChat() {
           id: Date.now().toString(),
           role: "system",
           content:
-            "You are an assistant that give short answers to questions. You respond to health relaterd questions only. Your name is MedOrbXAI. Do not answer to any question that is not helth related.",
+            "You are an assistant that gives long answers. You respond to health relaterd questions only. Your name is MedOrbXAI. Do not answer to any question that is not helth related.",
         },
       ],
     });
@@ -31,7 +30,7 @@ export default function AiChat() {
     ref.current.scrollTo(0, ref.current.scrollHeight);
   }, [messages]);
   return (
-    <div className="flex flex-col justify-between mt-3 w-[50vw] h-[80vh] bg-purple-400 p-4 rounded-md">
+    <div className="flex flex-col justify-between mt-3 w-[50vw] h-[80vh] bg-purple-900 p-4 rounded-md">
       {error && <div className="text-red-500">{error.message}</div>}
       <ScrollArea className="mb-2 rounded-md p-4" ref={ref}>
         {messages.map((m) => (
@@ -78,14 +77,14 @@ export default function AiChat() {
           value={input}
           onChange={handleInputChange}
           placeholder="Ask a Question..."
-          className="pr-12 placeholder:italic placeholder:text-zinc-600/75 focus-visible:ring-zinc-500"
+          className="pr-12 placeholder:italic placeholder:text-white border-none outline-none bg-purple-800 text-white w-full rounded-md p-2"
         />
         <Button
           size="icon"
           type="submit"
           variant="secondary"
           disabled={isLoading}
-          className="w-fit p-2"
+          className="w-fit p-2 bg-purple-800"
         >
           <SendHorizontalIcon className="h-5 w-5 text-indigo-300" />
         </Button>
