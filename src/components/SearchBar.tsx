@@ -20,7 +20,7 @@ function SearchBar() {
   }, [query, router, session?.user.role]);
 
   return (
-    <div className="flex flex-row gap-5 rounded-full p-1 border-black border">
+    <div className="flex flex-row gap-5 rounded-full p-4 border-black border bg-pink-100 text-black absolute top-20">
       <SearchIcon />
       <input
         type="text"

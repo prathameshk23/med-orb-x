@@ -11,6 +11,7 @@ import {
 } from "@thirdweb-dev/react";
 import { Loader2, Upload } from "lucide-react";
 import React, { ChangeEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 function UploadRecords({ patientAddr }: { patientAddr: string }) {
   const [isfile, setFiles] = useState<File>();
@@ -23,6 +24,7 @@ function UploadRecords({ patientAddr }: { patientAddr: string }) {
     contract,
     "uploadRecord",
   );
+  const router = useRouter();
 
   const retriveFile = (e: ChangeEvent<HTMLInputElement>) => {
     const data = e.target.files;

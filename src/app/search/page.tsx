@@ -26,11 +26,11 @@ async function SearchPage({
           <div key={user.id} className="border p-4 my-4">
             <div className="flex items-center mb-2">
               <Image
-                src={user.image || "default-avatar.jpg"}
-                alt={user.name || "User Avatar"}
-                height={12}
-                width={12}
-                className="w-12 h-12 rounded-full mr-4"
+                src={user.image as string}
+                alt={user.name as string}
+                height={100}
+                width={100}
+                className="rounded-full"
               />
               <div>
                 <h2 className="text-xl font-bold">{user.name || "No Name"}</h2>

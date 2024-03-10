@@ -1,7 +1,5 @@
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 
 async function DoctorProfileCard() {

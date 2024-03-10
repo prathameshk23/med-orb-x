@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { UploadCloud } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import AddPrescription from "@/components/add-prescription";
 
 async function Page({ params }: { params: { patientId?: string } }) {
   const patientAddress = params.patientId;
@@ -34,11 +36,31 @@ async function Page({ params }: { params: { patientId?: string } }) {
               />
               <p>{data?.name}</p>
             </div>
-            <div>Email: {data?.email}</div>
           </div>
           <div>
+            <div>Email: {data?.email}</div>
             <div>Username: {data?.username}</div>
             <div>Address: {data?.address}</div>
+          </div>
+          <div className="flex justify-center items-center">
+            <Dialog>
+              <DialogTrigger>
+                <div className="hover:bg-pink-300 hover:text-black bg-purple-700 text-white p-2 rounded-md">
+                  Add Prescription
+                </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader className="flex justify-center items-center">
+                  <DialogTitle>Add Prescription</DialogTitle>
+                  <DialogDescription>
+                    Add a prescription for the patient
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex justify-center items-center">
+                  <AddPrescription patientAddr={patientAddress as string} />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         <PatientTableRenderer patientAddress={patientAddress as string} />

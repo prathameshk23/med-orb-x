@@ -26,15 +26,18 @@ async function SearchPage({
       <SearchBar />
       {users ? (
         users.map((user) => (
-          <div key={user.id} className="border p-4 my-4">
+          <div
+            key={user.id}
+            className="border p-4 my-4 bg-sky-200 text-black rounded-lg"
+          >
             <Link href={`/dashboard/patient/${user.address}`}>
-              <div className="flex items-center mb-2">
+              <div className="flex items-center mb-2 flex-row gap-3">
                 <Image
                   src={user.image || "default-avatar.jpg"}
                   alt={user.name || "User Avatar"}
-                  height={12}
-                  width={12}
-                  className="w-12 h-12 rounded-full mr-4"
+                  height={50}
+                  width={50}
+                  className="rounded-full"
                 />
                 <div>
                   <h2 className="text-xl font-bold">
@@ -47,10 +50,9 @@ async function SearchPage({
               </div>
               <div>
                 <p>Email: {user.email || "No Email"}</p>
-                <p>Role: {user.role || "No Role"}</p>
                 <p>Created At: {user.createdAt.toDateString()}</p>
                 <p>Updated At: {user.updatedAt.toDateString()}</p>
-                <p>Address {user.address}</p>
+                <p>Address: {user.address}</p>
               </div>
             </Link>
           </div>

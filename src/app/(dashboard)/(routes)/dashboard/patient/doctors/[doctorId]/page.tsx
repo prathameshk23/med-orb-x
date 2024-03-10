@@ -1,5 +1,14 @@
 import DoctorTableRenderer from "@/components/doctor-record-table";
 import GrantAccess from "@/components/permit-access";
+import ShowPrescription from "@/components/show-prescriptions";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { db } from "@/lib/db";
 import Image from "next/image";
 
@@ -24,11 +33,28 @@ async function Page({ params }: { params: { doctorId?: string } }) {
             />
             <p>Dr. {data?.name}</p>
           </div>
-          <div>Email: {data?.email}</div>
         </div>
         <div>
+          <div>Email: {data?.email}</div>
           <div>Username: {data?.username}</div>
           <div>Address: {data?.address}</div>
+        </div>
+        <div className="flex justify-center items-center">
+          <Dialog>
+            <DialogTrigger>
+              <div className="hover:bg-pink-300 hover:text-black bg-purple-700 text-white p-2 rounded-md">
+                Show Prescription
+              </div>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader className="flex justify-center items-center">
+                <DialogTitle>Prescription</DialogTitle>
+              </DialogHeader>
+              <div className="flex justify-center items-center">
+                <ShowPrescription doctorAddr={doctorAddress as string} />
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       <GrantAccess doctorAddr={doctorAddress} />
