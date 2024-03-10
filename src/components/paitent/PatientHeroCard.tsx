@@ -16,9 +16,8 @@ async function DoctorHeroCard() {
       <Image
         src={"/patient.svg"}
         alt="Image of doctor"
-        width={600}
-        height={600}
-        className="lg:mt-24 size-[12rem] 2xl:size-[36rem] xl:size-[14rem]"
+        width={500}
+        height={500}
       />
     </div>
   );

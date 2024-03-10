@@ -1,3 +1,7 @@
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/components/Providers";
@@ -21,10 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={GeistSans.className}>
         <Toaster />
-        <Providers>
-          {authModal}
-          {children}
-        </Providers>
+        <MantineProvider>
+          <Providers>
+            {authModal}
+            {children}
+          </Providers>
+        </MantineProvider>
         <SpeedInsights />
       </body>
     </html>

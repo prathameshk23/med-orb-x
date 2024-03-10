@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
+import { Skeleton } from "./ui/skeleton";
 
 function ShowDoctors() {
   const { doctorWithAccess } = useContractContext();
@@ -27,7 +28,29 @@ function ShowDoctors() {
           id="userContainer"
         >
           {data.isLoading ? (
-            <p>Loading...</p>
+            <div className="flex flex-row gap-4">
+              <Skeleton className="flex flex-row items-center space-x-4 p-4 w-[25rem] h-[10rem]">
+                <Skeleton className="h-12 w-12 rounded-full" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-[250px]" />
+                  <Skeleton className="h-4 w-[200px]" />
+                </div>
+              </Skeleton>
+              <Skeleton className="flex flex-row items-center space-x-4 p-4 w-[25rem] h-[10rem]">
+                <Skeleton className="h-12 w-12 rounded-full" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-[250px]" />
+                  <Skeleton className="h-4 w-[200px]" />
+                </div>
+              </Skeleton>
+              <Skeleton className="flex flex-row items-center space-x-4 p-4 w-[25rem] h-[10rem]">
+                <Skeleton className="h-12 w-12 rounded-full" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-[250px]" />
+                  <Skeleton className="h-4 w-[200px]" />
+                </div>
+              </Skeleton>
+            </div>
           ) : (
             doctors?.map((doctor) => (
               <div

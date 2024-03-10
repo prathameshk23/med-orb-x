@@ -2,6 +2,7 @@
 import { useContractContext } from "@/context/contractContext";
 import { useAddress, useContractRead } from "@thirdweb-dev/react";
 import { ScrollArea } from "./ui/scroll-area";
+import { Skeleton } from "./ui/skeleton";
 
 function ShowPrescription({ doctorAddr }: { doctorAddr: string }) {
   function formatDate(timestamp: number) {
@@ -34,7 +35,16 @@ function ShowPrescription({ doctorAddr }: { doctorAddr: string }) {
       <div>
         <ScrollArea className="h-[50vh] w-full p-10">
           {isLoading ? (
-            <div>Loading...</div>
+            <div className="flex flex-col items-center justify-center gap-3">
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+                <Skeleton className="h-4 w-[200px]" />
+              </div>
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+                <Skeleton className="h-4 w-[200px]" />
+              </div>
+            </div>
           ) : (
             <div>
               {data?.map((prescription: any, index: number) => (
@@ -48,7 +58,9 @@ function ShowPrescription({ doctorAddr }: { doctorAddr: string }) {
                     </div>
                     <div className="mb-2">
                       <div>Medicine: {prescription.medicine}</div>
-                      <div>Dosage: {parseInt(prescription.dosage, 16)}</div>
+                      <div>
+                        Dosage: {parseInt(prescription.dosage, 16)} times a day
+                      </div>
                       <div>Instructions: {prescription.instructions}</div>
                     </div>
                   </div>

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import SidebarSignout from "./SidebarSignout";
-import { Home, MessageCircle, UsersRound } from "lucide-react";
+import { Bot, Home, MessageCircle, UsersRound } from "lucide-react";
 import Link from "next/link";
 import {
   Tooltip,
@@ -16,6 +16,7 @@ const links = [
   { name: "Home", href: "/dashboard/doctor", icon: Home },
   { name: "Patients", href: "/dashboard/doctor/patients", icon: UsersRound },
   { name: "Chat", href: "/dashboard/doctor/chat", icon: MessageCircle },
+  { name: "Chat Bot", href: "/dashboard/doctor/ai", icon: Bot },
 ];
 
 function SideBar() {

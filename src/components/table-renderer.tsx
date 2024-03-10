@@ -2,6 +2,7 @@
 import { columns } from "@/app/(dashboard)/(routes)/dashboard/patient/records/columns";
 import { DataTable } from "@/components/data-table";
 import { useContractContext } from "@/context/contractContext";
+import { Skeleton } from "./ui/skeleton";
 
 function TableRenderer() {
   function formatDate(timestamp: number) {
@@ -32,7 +33,14 @@ function TableRenderer() {
   return (
     <div>
       {patientrecords.isLoading ? (
-        <div>Loading...</div>
+        <Skeleton className="gap-8 flex flex-col justify-center items-center h-[20rem] w-[80rem]">
+          <Skeleton className="h-4 w-[75rem]" />
+          <Skeleton className="h-4 w-[75rem]" />
+          <Skeleton className="h-4 w-[75rem]" />
+          <Skeleton className="h-4 w-[75rem]" />
+          <Skeleton className="h-4 w-[75rem]" />
+          <Skeleton className="h-4 w-[75rem]" />
+        </Skeleton>
       ) : (
         <DataTable columns={columns} data={mappedData} />
       )}
