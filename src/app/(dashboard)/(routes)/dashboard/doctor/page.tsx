@@ -26,27 +26,29 @@ async function Page() {
         </div>
         <div className="flex flex-row justify-center items-center gap-[8rem]">
           <DoctorStats />
-          <div>
-            <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-400 rounded-3xl text-black">
-              <div>
-                <Link href={"doctor/chat"}>
-                  <MessageSquare className="size-[4rem]" />
-                </Link>
-              </div>
-              <div className="text-2xl font-bold text-center">
-                Chat with you patients
+          <div className="flex gap-4">
+            <div>
+              <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-400 rounded-3xl text-black">
+                <div>
+                  <Link href={"doctor/chat"}>
+                    <MessageSquare className="size-[4rem]" />
+                  </Link>
+                </div>
+                <div className="text-2xl font-bold text-center">
+                  Chat with you patients
+                </div>
               </div>
             </div>
-          </div>
-          <div>
-            <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-yellow-200 rounded-3xl text-black">
-              <div>
-                <Link href={"doctor/ai"}>
-                  <Bot size={100} />
-                </Link>
-              </div>
-              <div className="text-2xl font-bold text-center">
-                Take help from AI
+            <div>
+              <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-200 rounded-3xl text-black">
+                <div>
+                  <Link href={"doctor/ai"}>
+                    <Bot size={100} />
+                  </Link>
+                </div>
+                <div className="text-2xl font-bold text-center">
+                  Take help from AI
+                </div>
               </div>
             </div>
           </div>

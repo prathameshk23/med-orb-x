@@ -39,7 +39,7 @@ async function page() {
               </div>
             </div>
             <div>
-              <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-yellow-200 rounded-3xl text-black">
+              <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-200 rounded-3xl text-black">
                 <div>
                   <Link href={"patient/ai"}>
                     <BotIcon size={100} />

@@ -16,14 +16,14 @@ function DoctorStats() {
   const numberOfPatients = patientList?.length;
   return (
     <div className="flex gap-4">
-      <div className="flex flex-col justify-center items-center size-[20rem] bg-red-400 rounded-3xl text-black">
+      <div className="flex flex-col justify-center items-center size-[20rem] bg-indigo-400 rounded-3xl text-black">
         <div className="flex flex-col justify-center items-center border-pink-100 border-8 p-16 rounded-full ">
           <div className="text-5xl font-bold">{numberOfPatients}</div>
           <div className="text-2xl font-bold">Total</div>
           <div className="text-2xl font-bold">Patients</div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center size-[20rem] bg-sky-400 rounded-3xl text-black">
+      <div className="flex flex-col justify-center items-center size-[20rem] bg-indigo-200 rounded-3xl text-black">
         <div className="flex flex-col justify-center items-center border-pink-100 border-8 p-16 rounded-full ">
           <div className="text-5xl font-bold">{totalRecords}</div>
           <div className="text-2xl font-bold">Records</div>
