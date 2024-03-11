@@ -26,27 +26,29 @@ async function page() {
           </div>
           <div className="flex flex-row justify-center items-center gap-[8rem]">
             <Stats />
-            <div>
-              <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-400 rounded-3xl text-black">
-                <div>
-                  <Link href={"patient/search"}>
-                    <Contact size={100} />
-                  </Link>
-                </div>
-                <div className="text-2xl font-bold text-center">
-                  Connect with your doctor
+            <div className="flex gap-4">
+              <div>
+                <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-400 rounded-3xl text-black">
+                  <div>
+                    <Link href={"patient/search"}>
+                      <Contact size={100} />
+                    </Link>
+                  </div>
+                  <div className="text-2xl font-bold text-center">
+                    Connect with your doctor
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-200 rounded-3xl text-black">
-                <div>
-                  <Link href={"patient/ai"}>
-                    <BotIcon size={100} />
-                  </Link>
-                </div>
-                <div className="text-2xl font-bold text-center">
-                  Chat with AI for health related queryes
+              <div>
+                <div className="gap-4 flex flex-col justify-center items-center size-[20rem] bg-indigo-200 rounded-3xl text-black">
+                  <div>
+                    <Link href={"patient/ai"}>
+                      <BotIcon size={100} />
+                    </Link>
+                  </div>
+                  <div className="text-2xl font-bold text-center">
+                    Chat with AI for health related queryes
+                  </div>
                 </div>
               </div>
             </div>
