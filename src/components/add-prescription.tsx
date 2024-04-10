@@ -9,6 +9,7 @@ import { Loader2, Upload } from "lucide-react";
 import { useRef, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import toast from "react-hot-toast";
+import { BigNumber } from "ethers";
 
 function AddPrescription({ patientAddr }: { patientAddr: string }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +28,7 @@ function AddPrescription({ patientAddr }: { patientAddr: string }) {
     setIsLoading(true);
     try {
       await addPrescription({
-        args: [patientAddr, medicine, dosage, duration, instructions],
+        args: [patientAddr, medicine, 3, 0, instructions],
       });
       toast.success("Prescription added successfully");
     } catch (err) {
@@ -63,7 +64,7 @@ function AddPrescription({ patientAddr }: { patientAddr: string }) {
             onChange={(e) => setInstructions(e.target.value)}
           />
         </form>
-        <div className="flex justify-center items-center flex-col gap-4">
+        <div className="flex flex-col gap-4 justify-center items-center">
           <Button
             disabled={!address}
             className={cn(
